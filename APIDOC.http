@@ -1,0 +1,37 @@
+#----accounts---
+#api call for creating user
+###
+POST http://127.0.0.1:8000/accounts/register/
+Content-Type: application/json
+
+{
+  "username":"iamsooraj",
+  "password":"sooraj@123",
+  "email":"soorajkj@gmail.com",
+  "phone":8976567422,
+  "dob":"2005-03-14",
+  "age":21,
+  "weight":58,
+  "height":181
+}
+
+
+#----calories----
+#api call for get all calories
+###
+GET http://127.0.0.1:8000/calories/
+Accept: application/json
+Authorization: Basic iamsooraj:sooraj@123
+
+#api call for adding calories
+###
+POST http://127.0.0.1:8000/calories/add/
+Content-Type: application/json
+Authorization: Basic iamsooraj:sooraj@123
+
+{
+  "title":"Vegetable Salad",
+  "serving_size":"1 bowl",
+  "meal_type":"dinner"
+
+}
