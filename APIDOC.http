@@ -5,12 +5,12 @@ POST http://127.0.0.1:8000/accounts/register/
 Content-Type: application/json
 
 {
-  "username":"iamsooraj",
-  "password":"sooraj@123",
-  "email":"soorajkj@gmail.com",
-  "phone":8976567422,
-  "dob":"2005-03-14",
-  "age":21,
+  "username":"raman",
+  "password":"raman@123",
+  "email":"raman@gmail.com",
+  "phone":8976569022,
+  "dob":"2004-03-14",
+  "age":22,
   "weight":58,
   "height":181
 }
@@ -21,17 +21,63 @@ Content-Type: application/json
 ###
 GET http://127.0.0.1:8000/calories/
 Accept: application/json
-Authorization: Basic iamsooraj:sooraj@123
+Authorization: Basic raman:raman@123
+
+
 
 #api call for adding calories
 ###
 POST http://127.0.0.1:8000/calories/add/
 Content-Type: application/json
-Authorization: Basic iamsooraj:sooraj@123
+Authorization: Basic raman:raman@123
 
 {
-  "title":"Vegetable Salad",
-  "serving_size":"1 bowl",
-  "meal_type":"dinner"
+  "title":"pazhampori",
+  "serving_size":"1 plate",
+  "calorie":350,
+  "meal_type":"snacks"
 
 }
+
+
+
+#api call for get calorie
+###
+GET http://127.0.0.1:8000/calories/3/
+Accept: application/json
+Authorization: Basic raman:raman@123
+
+
+
+#api call for updating calorie
+###
+PUT http://127.0.0.1:8000/calories/5/
+Content-Type: application/json
+Authorization: Basic raman:raman@123
+
+{
+  "id": 5,
+  "title": "chicken biriyani",
+  "serving_size": "1 plate",
+  "calorie": 700,
+  "meal_type": "lunch",
+  "food_image": null,
+  "created_at": "2026-11-16T12:18:22.584239Z",
+  "owner": 2
+}
+
+
+
+#api call for delete calorie
+###
+DELETE  http://127.0.0.1:8000/calories/4/
+Authorization: Basic raman:raman@123
+
+
+
+
+#api call for get calorie summary
+###
+GET http://127.0.0.1:8000/calories/summary/
+Accept: application/json
+Authorization: Basic raman:raman@123

@@ -9,6 +9,8 @@ class FoodLog(models.Model):
 
   serving_size=models.CharField(max_length=200)
 
+  calorie=models.FloatField(default=0.0)
+
   MEAL_CHOICHES=[
     ('breakfast','breakfast'),
     ('lunch','lunch'),

@@ -20,6 +20,8 @@ from django.urls import path
 from accounts.views import SignUpView
 
 from calorie_management.views import CalorieListCreateView
+from calorie_management.views import CalorieRetrieveUpdateDeleteView
+from calorie_management.views import CalorieSummaryView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +33,9 @@ urlpatterns = [
     #calorie
     path('calories/',CalorieListCreateView.as_view()),
     path('calories/add/',CalorieListCreateView.as_view()),
+
+    path('calories/<int:pk>/',CalorieRetrieveUpdateDeleteView.as_view()),
+
+    #calorie summary
+    path('calories/summary/',CalorieSummaryView.as_view()),
 ]
