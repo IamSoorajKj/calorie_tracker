@@ -23,6 +23,8 @@ from calorie_management.views import CalorieListCreateView
 from calorie_management.views import CalorieRetrieveUpdateDeleteView
 from calorie_management.views import CalorieSummaryView
 
+from rest_framework.authtoken.views import ObtainAuthToken
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -38,4 +40,8 @@ urlpatterns = [
 
     #calorie summary
     path('calories/summary/',CalorieSummaryView.as_view()),
+
+    #token generation
+
+    path('token/',ObtainAuthToken.as_view()),
 ]

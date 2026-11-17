@@ -17,7 +17,7 @@ from datetime import datetime
 
 class CalorieListCreateView(APIView):
 
-  authentication_classes=[authentication.BasicAuthentication]
+  authentication_classes=[authentication.TokenAuthentication]
 
   permission_classes=[permissions.IsAuthenticated]
 
@@ -50,7 +50,7 @@ class CalorieListCreateView(APIView):
 
 class CalorieRetrieveUpdateDeleteView(APIView):
 
-  authentication_classes=[authentication.BasicAuthentication]
+  authentication_classes=[authentication.TokenAuthentication]
 
   permission_classes=[IsOwner]
 
@@ -99,7 +99,7 @@ class CalorieRetrieveUpdateDeleteView(APIView):
 
 class CalorieSummaryView(APIView):
 
-  authentication_classes=[authentication.BasicAuthentication]
+  authentication_classes=[authentication.TokenAuthentication]
 
   permission_classes=[permissions.IsAuthenticated]
 
@@ -115,9 +115,24 @@ class CalorieSummaryView(APIView):
       "monthly_calorie":0
     }
 
+    #todays_total_calorie
+
     todays_total_calorie=auth_user_calories.filter(created_at__date=curr_date).values("calorie").aggregate(total=Sum("calorie")).get("total")
 
+    #monthly_calorie
+
+
+    curr_month=datetime.today().month
+
+    curr_year=datetime.today().year
+
+    monthly_calorie=auth_user_calories.filter(created_at__month=curr_month,created_at__year=curr_year).values("calorie").aggregate(total=Sum("calorie")).get("total")
+    
+    #assigning both month,today calorie
+    
     response_data["todays_total_calorie"]=todays_total_calorie
+
+    response_data["monthly_calorie"]=monthly_calorie
 
     return Response(response_data)
 

@@ -16,12 +16,34 @@ Content-Type: application/json
 }
 
 
+
+
+
+
+#----token--------
+#api call for generate token
+###
+POST http://127.0.0.1:8000/token/
+Content-Type: application/json
+
+{
+  "username":"iamsooraj",
+  "password":"sooraj@123"
+}
+
+
+
+
+
 #----calories----
 #api call for get all calories
 ###
 GET http://127.0.0.1:8000/calories/
 Accept: application/json
-Authorization: Basic raman:raman@123
+Authorization: Token 0b7855d764f243e6df882ff49944642b1f2c0457
+
+
+
 
 
 
@@ -29,23 +51,28 @@ Authorization: Basic raman:raman@123
 ###
 POST http://127.0.0.1:8000/calories/add/
 Content-Type: application/json
-Authorization: Basic raman:raman@123
+Authorization: Token 0b7855d764f243e6df882ff49944642b1f2c0457
 
 {
-  "title":"pazhampori",
-  "serving_size":"1 plate",
-  "calorie":350,
-  "meal_type":"snacks"
+  "title":"porotta",
+  "serving_size":"3",
+  "calorie":800,
+  "meal_type":"dinner"
 
 }
 
 
 
+
+
 #api call for get calorie
 ###
-GET http://127.0.0.1:8000/calories/3/
+GET http://127.0.0.1:8000/calories/1/
 Accept: application/json
-Authorization: Basic raman:raman@123
+Authorization: Token 0b7855d764f243e6df882ff49944642b1f2c0457
+
+
+
 
 
 
@@ -53,7 +80,7 @@ Authorization: Basic raman:raman@123
 ###
 PUT http://127.0.0.1:8000/calories/5/
 Content-Type: application/json
-Authorization: Basic raman:raman@123
+Authorization: Token 0b7855d764f243e6df882ff49944642b1f2c0457
 
 {
   "id": 5,
@@ -68,6 +95,9 @@ Authorization: Basic raman:raman@123
 
 
 
+
+
+
 #api call for delete calorie
 ###
 DELETE  http://127.0.0.1:8000/calories/4/
@@ -76,8 +106,10 @@ Authorization: Basic raman:raman@123
 
 
 
+
+
 #api call for get calorie summary
 ###
 GET http://127.0.0.1:8000/calories/summary/
 Accept: application/json
-Authorization: Basic raman:raman@123
+Authorization: Token 0b7855d764f243e6df882ff49944642b1f2c0457
